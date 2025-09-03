@@ -494,4 +494,209 @@ hi
 </details>
 
 ---
+### Challenge #11: Symbols and JSON Serialization 🟡
 
+**Quiz:**
+```javascript
+const myObject = {};
+const key = Symbol('key');
+myObject[key] = 'value';
+console.log(myObject[Symbol('key')]);
+console.log(JSON.stringify(myObject));
+```
+
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `value, {}`
+- B) `undefined, {}`
+- C) `value, {"key": "value"}`
+- D) `value, { Symbol("key"): "value" }`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: B** `undefined, {}`
+
+**Explanation:**
+1. `const key = Symbol('key');` → Creates a unique symbol
+2. `myObject[key] = 'value';` → Sets property using the symbol as key
+3. `console.log(myObject[Symbol('key')]);` → Creates a NEW symbol with same description, but it's different from the original
+4. Since each Symbol() call creates a unique symbol, accessing with `Symbol('key')` returns `undefined`
+5. `JSON.stringify(myObject)` → Symbol properties are ignored during JSON serialization
+
+**Key Point:** Each `Symbol()` call creates a unique symbol, even with the same description!
+
+**Final output:** 
+undefined
+{}
+
+
+**Concepts Covered:**
+- Symbol uniqueness
+- Symbol as object keys
+- JSON.stringify behavior with symbols
+- Symbol registry vs local symbols
+
+</details>
+
+---
+
+### Challenge #12: Object.setPrototypeOf 🟡
+
+**Quiz:**
+```
+let x = {
+a: 1,
+b: 2
+};
+let y = {
+b: 3,
+c: 4
+};
+Object.setPrototypeOf(x, y);
+console.log(x.b);
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `1`
+- B) `2`
+- C) `3`
+- D) `4`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: B** `2`
+
+**Explanation:**
+1. Object `x` has properties `a: 1` and `b: 2`
+2. Object `y` has properties `b: 3` and `c: 4`
+3. `Object.setPrototypeOf(x, y);` → Sets `y` as the prototype of `x`
+4. `console.log(x.b);` → Looks for property `b` on `x` first
+5. Since `x` has its own `b` property with value `2`, it doesn't look up the prototype chain
+6. Own properties take precedence over inherited properties
+
+**Key Point:** Own properties shadow prototype properties with the same name!
+
+**Final output:** 
+2
+
+
+**Concepts Covered:**
+- Prototype chain
+- Object.setPrototypeOf()
+- Property shadowing
+- Own properties vs inherited properties
+
+</details>
+
+---
+
+### Challenge #13: Try-Catch-Finally and Delete Operator 🟡
+
+**Quiz:**
+foo = 2;
+
+try {
+foo = 2 / 0;
+} catch (e) {
+delete foo;
+} finally {
+foo = foo * -1;
+}
+
+console.log(foo);
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `Infinity`
+- B) `-Infinity`
+- C) `Error`
+- D) `undefined`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: B** `-Infinity`
+
+**Explanation:**
+1. `foo = 2;` → Creates global variable `foo` with value `2`
+2. `try { foo = 2 / 0; }` → Division by zero results in `Infinity`, no error thrown
+3. `catch (e)` block is NOT executed because no error was thrown
+4. `finally { foo = foo * -1; }` → Always executes, `foo` is `Infinity`, so `Infinity * -1 = -Infinity`
+5. `console.log(foo);` → Outputs `-Infinity`
+
+**Key Point:** Division by zero in JavaScript returns `Infinity`, not an error!
+
+**Final output:** 
+-Infinity
+
+**Concepts Covered:**
+- Try-catch-finally execution flow
+- Division by zero behavior
+- Infinity arithmetic
+- When catch blocks execute
+
+</details>
+
+---
+
+### Challenge #14: This Context in Function Calls 🟡
+
+**Quiz:**
+```javascript
+var obj = {
+x: 2,
+fun: function() {
+console.log(this.x);
+},
+};
+
+obj.fun();
+new obj.fun();
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `2, 2`
+- B) `undefined, 2`
+- C) `2, {}` 
+- D) `undefined, {}`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: C** `2, undefined`
+
+**Explanation:**
+1. `obj.fun();` → Method call: `this` refers to `obj`, so `this.x` is `2`
+2. `new obj.fun();` → Constructor call: `this` refers to a new empty object `{}`
+3. The new object doesn't have an `x` property, so `this.x` is `undefined`
+4. When using `new`, the function becomes a constructor and `this` points to the newly created instance
+
+**Key Point:** The `new` operator changes the `this` context to a new object instance!
+
+**Final output:** 
+2
+undefined
+
+**Concepts Covered:**
+- Method vs constructor invocation
+- `this` binding rules
+- `new` operator behavior
+- Object method context
+
+</details>
+
+---
