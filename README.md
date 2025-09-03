@@ -40,6 +40,7 @@ Each challenge follows this format:
 ### Challenge #1: Increment Operators 🟢
 
 **Quiz:**
+```javascript
 let x = 100;
 let y = x++;
 let z = ++x;
@@ -47,3 +48,4 @@ let z = ++x;
 let n = (x == y) ? z++ : ++z;
 
 console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
+```
