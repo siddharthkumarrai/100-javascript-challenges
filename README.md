@@ -408,7 +408,7 @@ console.log('1' + 1 + 2);
 ```javascript
 var bar = function foo() {};
 console.log(bar === foo);
-
+```
 
 ### 🗳️ Quick Vote:
 **Question:** What is the output?
