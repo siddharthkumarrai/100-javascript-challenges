@@ -55,3 +55,9 @@ console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 [![Vote Now](https://img.shields.io/badge/🗳️%20VOTE%20NOW-GitHub%20Discussion-blue?style=for-the-badge)](https://github.com/yourusername/repo/discussions/1)
 
 *Click above for live poll with instant results (no 404 errors)*
+What will be logged to the console?
+
+□ A) x: 102, y: 100, z: 102, n: 102  
+□ B) x: 102, y: 100, z: 103, n: 103
+□ C) x: 101, y: 100, z: 102, n: 103
+□ D) x: 103, y: 100, z: 103, n: 103
