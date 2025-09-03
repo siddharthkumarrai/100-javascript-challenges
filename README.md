@@ -601,6 +601,7 @@ console.log(x.b);
 ### Challenge #13: Try-Catch-Finally and Delete Operator 🟡
 
 **Quiz:**
+```javascript
 foo = 2;
 
 try {
