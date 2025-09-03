@@ -310,3 +310,188 @@ console.log(2);
 </details>
 
 ---
+### Challenge #7: String Comparison 🟢
+
+**Quiz:**
+```javascript
+console.log("9" > "19");
+console.log("09" > "19");
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `true, true`
+- B) `false, true`
+- C) `true, false`
+- D) `false, false`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: C** `true, false`
+
+**Explanation:**
+1. `console.log("9" > "19");` → String comparison is lexicographic (alphabetical)
+   - "9" vs "19": First character "9" > "1", so result is `true`
+2. `console.log("09" > "19");` → String comparison character by character
+   - "09" vs "19": First character "0" < "1", so result is `false`
+
+**Key Point:** String comparison in JavaScript is lexicographic, not numeric!
+
+**Final output:** 
+true
+false
+
+
+**Concepts Covered:**
+- String comparison vs numeric comparison
+- Lexicographic ordering
+- Type coercion behavior
+- Leading zeros in strings
+
+</details>
+
+---
+
+### Challenge #8: Type Coercion and Operator Precedence 🟢
+
+**Quiz:**
+```javascript
+console.log(1 + 2 + '1');
+console.log('1' + 1 + 2);
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `112, 112`
+- B) `121, 112`
+- C) `31, 13`
+- D) `31, 112`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: D** `31, 112`
+
+**Explanation:**
+1. `console.log(1 + 2 + '1');` → Left-to-right evaluation
+   - `1 + 2` = `3` (numeric addition)
+   - `3 + '1'` = `"31"` (string concatenation, 3 converts to "3")
+2. `console.log('1' + 1 + 2);` → Left-to-right evaluation
+   - `'1' + 1` = `"11"` (string concatenation, 1 converts to "1")
+   - `"11" + 2` = `"112"` (string concatenation, 2 converts to "2")
+
+**Key Point:** The `+` operator is left-associative; when one operand is a string, it becomes string concatenation!
+
+**Final output:** 
+31
+112
+
+
+**Concepts Covered:**
+- Type coercion with + operator
+- Operator associativity
+- String concatenation vs numeric addition
+- Left-to-right evaluation
+
+</details>
+
+---
+
+### Challenge #9: Function Expression vs Function Declaration 🟡
+
+**Quiz:**
+```javascript
+var bar = function foo() {};
+console.log(bar === foo);
+
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `true`
+- B) `false`
+- C) `ReferenceError`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: C** `ReferenceError`
+
+**Explanation:**
+1. `var bar = function foo() {};` → Creates a named function expression
+2. The function is assigned to variable `bar`
+3. The name `foo` is only available inside the function itself, not in the outer scope
+4. `console.log(bar === foo);` → Tries to access `foo` in outer scope, which doesn't exist
+5. This throws a ReferenceError because `foo` is not defined in the current scope
+
+**Key Point:** In named function expressions, the function name is only accessible within the function's own scope!
+
+**Final output:** 
+ReferenceError: foo is not defined
+
+
+**Concepts Covered:**
+- Named function expressions
+- Function scope and accessibility
+- Variable hoisting vs function name scope
+- ReferenceError vs other error types
+
+</details>
+
+---
+
+### Challenge #10: setTimeout and Object Property Deletion 🟡
+
+**Quiz:**
+```javascript
+let obj = {
+timeoutId: setTimeout(() => {
+console.log('hi');
+}, 1000)
+};
+
+delete obj.timeoutId;
+obj = null;
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `No error & No log`
+- B) `hi`
+- C) `Error`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: B** `hi`
+
+**Explanation:**
+1. `setTimeout(() => { console.log('hi'); }, 1000)` → Schedules a function to run after 1000ms
+2. The timeout ID is stored in `obj.timeoutId`
+3. `delete obj.timeoutId;` → Removes the property, but the timeout is already scheduled in the browser's timer queue
+4. `obj = null;` → Removes the reference to the object, but doesn't affect the scheduled timeout
+5. After 1000ms, the scheduled function still executes because setTimeout maintains its own reference
+
+**Key Point:** Once setTimeout is called, it's managed by the browser's event loop independently of your object references!
+
+**Final output (after 1 second):** 
+hi
+
+**Concepts Covered:**
+- setTimeout and event loop
+- Object property deletion
+- Memory management and references
+- Asynchronous JavaScript execution
+
+</details>
+
+---
+
