@@ -83,6 +83,52 @@ console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 
 ---
 
-### Challenge #2: Variable Hoisting 🟢
+### Challenge #2: Boolean Constructor 🟢
 
 **Quiz:**
+```javascript
+const f = new Boolean(false);
+
+if (f) {
+console.log(1);
+} else {
+console.log(2);
+}
+
+console.log(typeof f);
+```
+
+### 🗳️ Quick Vote:
+**Question:** What will be logged to the console?
+
+**Options:**
+- A) `1, boolean`
+- B) `2, boolean`
+- C) `1, object`
+- D) `2, object`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: C** 
+
+**Explanation:**
+1. `const f = new Boolean(false);` → Creates a Boolean object wrapper, not a primitive boolean
+2. Boolean objects are always truthy in JavaScript, regardless of the value they wrap
+3. `if (f)` → Since f is an object (truthy), the condition evaluates to true, so `console.log(1)` executes
+4. `console.log(typeof f);` → The typeof operator returns "object" for Boolean objects, not "boolean"
+
+**Key Point:** `new Boolean(false)` creates an object that wraps the false value, but the object itself is truthy!
+
+**Final output:** 
+
+**Concepts Covered:**
+- Boolean constructor vs primitive booleans
+- Truthy/falsy values
+- Object wrappers
+- typeof operator behavior
+- Difference between `Boolean(false)` and `new Boolean(false)`
+
+</details>
+
+---
