@@ -86,3 +86,44 @@ console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 
 **Quiz:**
 
+```javascript
+console.log(a);
+var a = 5;
+console.log(a);
+
+console.log(b);
+let b = 10;
+```
+
+**Question:** What will happen when this code runs?
+
+**Options:**
+- A) undefined, 5, ReferenceError
+- B) ReferenceError, 5, undefined
+- C) undefined, 5, undefined
+- D) 5, 5, 10
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: A** undefined, 5, ReferenceError
+
+**Explanation:**
+1. `var` declarations are hoisted and initialized with `undefined`
+2. First `console.log(a)` prints `undefined`
+3. After assignment, second `console.log(a)` prints `5`
+4. `let` declarations are hoisted but not initialized (Temporal Dead Zone)
+5. Accessing `b` before declaration throws `ReferenceError`
+
+**Concepts Covered:**
+- Variable hoisting
+- Temporal Dead Zone
+- Difference between `var` and `let`
+
+</details>
+
+---
+
+### Challenge #3: This Binding 🟡
+
+**Quiz:**
