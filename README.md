@@ -123,6 +123,6 @@ console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 
 </details>
 ### 🗳️ Vote Here:
-[![Discussion Poll](https://img.shields.io/badge/Vote%20in-Discussion%20Poll-blue?style=for-the-badge)](https://github.com/username/repo/discussions/1)
+[![Discussion Poll](https://img.shields.io/badge/Vote%20in-Discussion%20Poll-blue?style=for-the-badge)](https://github.com/username/repo/discussions/1)]
 
 *Real-time results in discussion thread above*
