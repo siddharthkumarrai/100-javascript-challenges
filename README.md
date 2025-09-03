@@ -49,19 +49,3 @@ let n = (x == y) ? z++ : ++z;
 
 console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 ```
-## 🧩 Challenge #1: Increment Operators
-
-**Quiz:** [let x = 100;
-let y = x++;
-let z = ++x;
-
-let n = (x == y) ? z++ : ++z;
-
-console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
-]
-
-### 🗳️ Vote Now:
-[![Vote on Strawpoll](https://img.shields.io/badge/Vote%20Now-Strawpoll-red?style=for-the-badge)](http://strawpoll.me/your-poll-id)
-
-### 📊 Live Results:
-<iframe src="http://strawpoll.me/embed_1/your-poll-id" style="width:100%; height:400px; border:0;">Loading poll...</iframe>
