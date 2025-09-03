@@ -78,7 +78,7 @@ console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 - Pre-increment operator (`++x`)
 - Ternary operator
 - Operator precedence
-
+ 
 </details>
 
 ---
