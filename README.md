@@ -124,3 +124,189 @@ console.log(typeof f);
 </details>
 
 ---
+### Challenge #3: Destructuring Assignment 🟢
+
+**Quiz:**
+```javascript
+const obj = { x: 1, y: 2 };
+let { x: a, y: b } = obj;
+a = 2;
+console.log(obj.x, obj.y);
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `1, 2`
+- B) `2, 2`
+- C) `TypeError`
+- D) `ReferenceError`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: A** 
+
+**Explanation:**
+1. `const obj = { x: 1, y: 2 };` → Creates an object with properties x and y
+2. `let { x: a, y: b } = obj;` → Destructuring assignment creates new variables `a` and `b` with values from `obj.x` and `obj.y`
+3. `a = 2;` → Changes the value of variable `a`, but does NOT affect `obj.x`
+4. `console.log(obj.x, obj.y);` → The original object remains unchanged
+
+**Key Point:** Destructuring creates new variables; modifying them doesn't affect the original object!
+
+**Final output:** 
+
+**Concepts Covered:**
+- Destructuring assignment
+- Object properties vs variables
+- Variable aliasing in destructuring
+- Object immutability concepts
+
+</details>
+
+---
+
+### Challenge #4: Hoisting and Temporal Dead Zone 🟡
+
+**Quiz:**
+```javascript
+let elf = 'Estel';
+
+function lapland(params) {
+console.log(elf);
+let elf = 'Arwen';
+}
+
+lapland();
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `undefined`
+- B) `ReferenceError`
+- C) `Arwen`
+- D) `Estel`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: B** 
+
+**Explanation:**
+1. The function `lapland` has a local `let elf = 'Arwen';` declaration
+2. Due to hoisting, the `let elf` declaration is hoisted to the top of the function scope
+3. However, `let` variables are in the "Temporal Dead Zone" before their declaration line
+4. `console.log(elf);` tries to access `elf` before it's initialized, causing a ReferenceError
+5. The global `elf = 'Estel'` is shadowed by the local declaration
+
+**Key Point:** `let` and `const` are hoisted but remain uninitialized until their declaration line!
+
+**Final output:** 
+ReferenceError: Cannot access 'elf' before initialization
+
+**Concepts Covered:**
+- Hoisting behavior of `let` vs `var`
+- Temporal Dead Zone
+- Variable shadowing
+- Function scope vs block scope
+
+</details>
+
+---
+
+### Challenge #5: Object.hasOwn Method 🟢
+
+**Quiz:**
+```javascript
+const obj = {};
+obj.value = undefined;
+console.log(Object.hasOwn(obj, 'value'));
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `undefined`
+- B) `false`
+- C) `true`
+- D) `{}`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: C**
+
+**Explanation:**
+1. `const obj = {};` → Creates an empty object
+2. `obj.value = undefined;` → Adds a property 'value' with the value `undefined` to the object
+3. `Object.hasOwn(obj, 'value')` → Checks if the object has its own property named 'value'
+4. Even though the property value is `undefined`, the property itself exists on the object
+
+**Key Point:** `Object.hasOwn()` checks for property existence, not the property's value!
+
+**Final output:** 
+true
+
+**Concepts Covered:**
+- Object.hasOwn() method
+- Property existence vs property value
+- undefined as a valid property value
+- Own properties vs inherited properties
+
+</details>
+
+---
+
+### Challenge #6: setTimeout and Function References 🟡
+
+**Quiz:**
+```javascript
+let foo = function () {
+console.log(1);
+};
+
+setTimeout(foo, 1000);
+
+foo = function () {
+console.log(2);
+};
+```
+
+### 🗳️ Quick Vote:
+**Question:** What is the output?
+
+**Options:**
+- A) `1`
+- B) `2`
+- C) `Error`
+
+<details>
+<summary>💡 Click to see solution</summary>
+
+**Answer: A**
+
+**Explanation:**
+1. `let foo = function () { console.log(1); };` → `foo` points to the first function
+2. `setTimeout(foo, 1000);` → setTimeout captures a reference to the current function (the one that logs 1)
+3. `foo = function () { console.log(2); };` → `foo` now points to a different function, but setTimeout still has the reference to the original function
+4. After 1000ms, setTimeout executes the original function that logs 1
+
+**Key Point:** setTimeout captures the function reference at the time it's called, not when it executes!
+
+**Final output (after 1 second):** 
+1
+
+**Concepts Covered:**
+- Function references vs function calls
+- setTimeout behavior
+- Variable reassignment
+- Closure and lexical scoping
+
+</details>
+
+---
