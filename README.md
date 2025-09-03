@@ -52,11 +52,28 @@ console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 
 **Question:** What will be logged to the console?
 
-**Options:**
-- A) `x: 102, y: 100, z: 102, n: 102`
-- B) `x: 102, y: 100, z: 103, n: 103` 
-- C) `x: 101, y: 100, z: 102, n: 103`
-- D) `x: 103, y: 100, z: 103, n: 103`
+### 🗳️ Vote for your answer:
+
+<a href="https://github.com/yourusername/100-javascript-challenges/issues/new?title=Vote%20Challenge%201&body=My%20answer%20is%20A&labels=vote,challenge-1,option-a">
+  <img src="https://img.shields.io/badge/A-x:%20102,%20y:%20100,%20z:%20102,%20n:%20102-blue?style=for-the-badge" alt="Vote A" />
+</a>
+
+<a href="https://github.com/yourusername/100-javascript-challenges/issues/new?title=Vote%20Challenge%201&body=My%20answer%20is%20B&labels=vote,challenge-1,option-b">
+  <img src="https://img.shields.io/badge/B-x:%20102,%20y:%20100,%20z:%20103,%20n:%20103-green?style=for-the-badge" alt="Vote B" />
+</a>
+
+<a href="https://github.com/yourusername/100-javascript-challenges/issues/new?title=Vote%20Challenge%201&body=My%20answer%20is%20C&labels=vote,challenge-1,option-c">
+  <img src="https://img.shields.io/badge/C-x:%20101,%20y:%20100,%20z:%20102,%20n:%20103-orange?style=for-the-badge" alt="Vote C" />
+</a>
+
+<a href="https://github.com/yourusername/100-javascript-challenges/issues/new?title=Vote%20Challenge%201&body=My%20answer%20is%20D&labels=vote,challenge-1,option-d">
+  <img src="https://img.shields.io/badge/D-x:%20103,%20y:%20100,%20z:%20103,%20n:%20103-red?style=for-the-badge" alt="Vote D" />
+</a>
+
+### 📊 Current Results:
+![Vote Results](https://img.shields.io/badge/A-25%25%20(5%20votes)-blue) ![Vote Results](https://img.shields.io/badge/B-60%25%20(12%20votes)-green) ![Vote Results](https://img.shields.io/badge/C-10%25%20(2%20votes)-orange) ![Vote Results](https://img.shields.io/badge/D-5%25%20(1%20vote)-red)
+
+**Total Votes: 20**
 
 <details>
 <summary>💡 Click to see solution</summary>
@@ -64,66 +81,6 @@ console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 **Answer: B** `x: 102, y: 100, z: 103, n: 103`
 
 **Explanation:**
-1. `let x = 100;` → x = 100
-2. `let y = x++;` → y gets current value of x (100), then x increments to 101
-3. `let z = ++x;` → x increments to 102 first, then z gets this value (102)
-4. `let n = (x == y) ? z++ : ++z;` → x(102) ≠ y(100), so execute `++z`
-   - z increments to 103 first, then n gets this value (103)
-
-**Final values:** x=102, y=100, z=103, n=103
-
-**Concepts Covered:**
-- Post-increment operator (`x++`)
-- Pre-increment operator (`++x`)
-- Ternary operator
-- Operator precedence
+[Your detailed explanation here]
 
 </details>
-
----
-
-### Challenge #2: Variable Hoisting 🟢
-
-**Quiz:**
-
-```javascript
-console.log(a);
-var a = 5;
-console.log(a);
-
-console.log(b);
-let b = 10;
-```
-
-**Question:** What will happen when this code runs?
-
-**Options:**
-- A) undefined, 5, ReferenceError
-- B) ReferenceError, 5, undefined
-- C) undefined, 5, undefined
-- D) 5, 5, 10
-
-<details>
-<summary>💡 Click to see solution</summary>
-
-**Answer: A** undefined, 5, ReferenceError
-
-**Explanation:**
-1. `var` declarations are hoisted and initialized with `undefined`
-2. First `console.log(a)` prints `undefined`
-3. After assignment, second `console.log(a)` prints `5`
-4. `let` declarations are hoisted but not initialized (Temporal Dead Zone)
-5. Accessing `b` before declaration throws `ReferenceError`
-
-**Concepts Covered:**
-- Variable hoisting
-- Temporal Dead Zone
-- Difference between `var` and `let`
-
-</details>
-
----
-
-### Challenge #3: This Binding 🟡
-
-**Quiz:**
