@@ -547,7 +547,7 @@ undefined
 ### Challenge #12: Object.setPrototypeOf 🟡
 
 **Quiz:**
-```
+```javascript
 let x = {
 a: 1,
 b: 2
