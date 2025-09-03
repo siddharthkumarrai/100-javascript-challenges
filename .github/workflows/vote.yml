@@ -1,0 +1,56 @@
+name: Process Vote
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-vote:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'vote')
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Process Vote
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const issue = context.payload.issue;
+          
+          // Extract vote data from labels
+          const challengeLabel = issue.labels.find(l => l.name.startsWith('challenge-'));
+          const optionLabel = issue.labels.find(l => l.name.startsWith('option-'));
+          
+          if (challengeLabel && optionLabel) {
+            const challengeNum = challengeLabel.name.split('-')[1];
+            const option = optionLabel.name.split('-')[1];
+            
+            // Update vote count
+            const voteFile = `votes/challenge-${challengeNum}.json`;
+            let votes = {};
+            
+            if (fs.existsSync(voteFile)) {
+              votes = JSON.parse(fs.readFileSync(voteFile));
+            }
+            
+            votes[option] = (votes[option] || 0) + 1;
+            fs.writeFileSync(voteFile, JSON.stringify(votes, null, 2));
+            
+            // Close the issue
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              state: 'closed'
+            });
+          }
+    
+    - name: Update README
+      run: |
+        node scripts/update-readme.js
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md votes/
+        git commit -m "Update vote counts" || exit 0
+        git push

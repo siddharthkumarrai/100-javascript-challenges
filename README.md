@@ -49,3 +49,11 @@ let n = (x == y) ? z++ : ++z;
 
 console.log(x: ${x}, y: ${y}, z: ${z}, n: ${n});
 ```
+### 🗳️ Quick Vote:
+
+| Option | Vote | Current Count |
+|--------|------|---------------|
+| **A** | [![Vote A](https://img.shields.io/badge/Vote-A-blue)](https://github.com/user/repo/issues/new?labels=vote-a-ch1&title=Vote+A+Challenge+1) | ![Count A](https://img.shields.io/github/issues-search/user/repo?query=label%3Avote-a-ch1&label=votes&color=blue) |
+| **B** | [![Vote B](https://img.shields.io/badge/Vote-B-green)](https://github.com/user/repo/issues/new?labels=vote-b-ch1&title=Vote+B+Challenge+1) | ![Count B](https://img.shields.io/github/issues-search/user/repo?query=label%3Avote-b-ch1&label=votes&color=green) |
+| **C** | [![Vote C](https://img.shields.io/badge/Vote-C-orange)](https://github.com/user/repo/issues/new?labels=vote-c-ch1&title=Vote+C+Challenge+1) | ![Count C](https://img.shields.io/github/issues-search/user/repo?query=label%3Avote-c-ch1&label=votes&color=orange) |
+| **D** | [![Vote D](https://img.shields.io/badge/Vote-D-red)](https://github.com/user/repo/issues/new?labels=vote-d-ch1&title=Vote+D+Challenge+1) | ![Count D](https://img.shields.io/github/issues-search/user/repo?query=label%3Avote-d-ch1&label=votes&color=red) |
